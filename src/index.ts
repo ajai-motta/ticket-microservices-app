@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 // Fixed route - now matches what ingress sends
-app.get("/api/users/", (req: Request, res: Response) => {
+app.get("/api/users/:currentuser", (req: Request, res: Response) => {
   console.log("Current user endpoint hit! ✅");
   res.send("hi there from current user endpoint");
 });

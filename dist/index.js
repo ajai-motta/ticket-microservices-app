@@ -10,7 +10,7 @@ const PORT = 3000;
 app.use(express_1.default.json());
 // Default Route
 // Fixed route - now matches what ingress sends
-app.get("/api/users/", (req, res) => {
+app.get("/api/users/:currentuser", (req, res) => {
     console.log("Current user endpoint hit! ✅");
     res.send("hi there from current user endpoint");
 });
