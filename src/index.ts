@@ -1,19 +1,21 @@
 import express, { Request, Response } from "express";
-
+import { currentUserRouter } from "./routes/current-user";
+import { signinUserRouter } from "./routes/signin";
+import { signoutUserRouter } from "./routes/signout";
+import { signupUserRouter } from "./routes/signup";
+import { errorHandler } from "./middlewares/error-handler";
 const app = express();
 const PORT = 3000;
 
 // Middleware
 app.use(express.json());
 
-// Default Route
 
-
-// Fixed route - now matches what ingress sends
-app.get("/api/users/:currentuser", (req: Request, res: Response) => {
-  console.log("Current user endpoint hit! ✅");
-  res.send("hi there from current user endpoint");
-});
+app.use(currentUserRouter)
+app.use(signinUserRouter)
+app.use(signoutUserRouter)
+app.use(signupUserRouter)
+app.use(errorHandler)
 
 // Start Server
 app.listen(PORT, () => {
