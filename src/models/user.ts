@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import {PasswordHashing} from '../generalPurpose/password'
 interface userattr{
 email: string;
 password: string;
@@ -21,9 +21,16 @@ const userSchema= new mongoose.Schema({
         required: true
     }
 })
-const User= mongoose.model<userDoc,userModel>('User',userSchema)
+userSchema.pre('save',async function(done){
+    if(this.isModified('password')){
+      const hashed=await PasswordHashing.toHash(this.get('password'))
+      this.set('password',hashed)
+    }
+    done()
+})
 userSchema.statics.build=(attr: userattr)=>{
     return new User(attr)
 }
+const User= mongoose.model<userDoc,userModel>('User',userSchema)
 
 export {User}
