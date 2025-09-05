@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cookieSession from "cookie-session";
 import { currentUserRouter } from "./routes/current-user";
 import { signinUserRouter } from "./routes/signin";
 import { signoutUserRouter } from "./routes/signout";
@@ -9,9 +10,15 @@ import mongoose from 'mongoose'
 const app = express();
 const PORT = 3000;
 
-// Middleware
+// trust traffic even though its comming from proxy  
+app.set('trust proxy',true)//trust ingress-nginx
+//parse content
 app.use(express.json());
-
+//cookie, remember content is a jwt so no encryption on cookie
+app.use(cookieSession({
+  signed: false,
+  secure: true,// From https
+}))
 
 app.use(currentUserRouter)
 app.use(signinUserRouter)
