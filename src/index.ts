@@ -30,6 +30,9 @@ app.all('/{*splat}', async() => {
 app.use(errorHandler)
 
 const startUp=async()=>{
+  if(!process.env.JWT_KEY){
+    throw new Error('No env variable')
+  }
   try{
 
     await mongoose.connect('mongodb://auth-mongo-srv:27017/auth')
