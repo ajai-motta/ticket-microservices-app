@@ -19,8 +19,21 @@ const userSchema= new mongoose.Schema({
     password:{
         type: String,
         required: true
-    }
-})
+    },
+    
+},{
+        toJSON:{
+            transform(doc,ret){
+              (ret as any).id=ret._id
+              delete (ret as any).password 
+              
+              delete (ret as any)._id
+            },
+            versionKey: false
+
+
+        }
+    })
 userSchema.pre('save',async function(done){
     if(this.isModified('password')){
       const hashed=await PasswordHashing.toHash(this.get('password'))
