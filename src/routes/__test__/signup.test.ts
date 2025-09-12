@@ -36,7 +36,7 @@ it('returns a status of 201 after singn up',async ()=>{
     }).expect(201)
     await  request(app).post('/api/users/signup').send({
         email: 'test@test.com',
-        password: 'sacredgeomety'
+        password: 'sacredgeomet'
     }).expect(400)
 })
 it('returns a status of 201 after singn up',async ()=>{
@@ -44,5 +44,6 @@ it('returns a status of 201 after singn up',async ()=>{
         email: 'test@test.com',
         password: 'sacredgeomety'
     }).expect(201)
+    
     expect(response.get('Set-Cookie')).toBeDefined()
 })
