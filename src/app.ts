@@ -16,7 +16,7 @@ app.use(express.json());
 //cookie, remember content is a jwt so no encryption on cookie
 app.use(cookieSession({
   signed: false,
-  secure: true,// From https
+  secure: process.env.NODE_ENV!=='test',// From https or not based on test env
 }))
 
 app.use(currentUserRouter)
