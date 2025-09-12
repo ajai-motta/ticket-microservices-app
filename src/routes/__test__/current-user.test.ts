@@ -9,3 +9,7 @@ it('returns a status of 201 after singn up',async ()=>{
    const response= await request(app).get('/api/users/currentuser').set('Cookie',cookie).send().expect(200);
    expect(response.body.currentUser.email).toEqual('test@test.com')
 })
+it('responds with status code 200 and current user null',async()=>{
+    const response=await request(app).get('/api/users/currentuser').send().expect(200)
+    expect(response.body.currentUser).toEqual(null)
+})
