@@ -1,24 +1,7 @@
-# ---------- BUILD STAGE ----------
-FROM node:18-alpine AS builder
+FROM node:alpine
 
 WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
+COPY package.json .
+RUN npm install 
 COPY . .
-RUN npm run build
-# runs tsc
-
-# ---------- RUNTIME STAGE ----------
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install --omit=dev
-
-COPY --from=builder /app/dist ./dist
-
-CMD ["node", "dist/index.js"]
-
+CMD [ "npm","run","dev" ]
