@@ -4,8 +4,8 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinUserRouter } from "./routes/signin";
 import { signoutUserRouter } from "./routes/signout";
 import { signupUserRouter } from "./routes/signup";
-import { errorHandler } from "./middlewares/error-handler";
-import { NotFoundError } from "./errors/not-found-error";
+import { errorHandler } from "@ajaisgtickets/common";
+import { NotFoundError } from "@ajaisgtickets/common";
 const app = express();
 
 
@@ -24,6 +24,7 @@ app.use(signinUserRouter)
 app.use(signoutUserRouter)
 app.use(signupUserRouter)
 app.all('/{*splat}', async() => {
+   console.log('route not found in /spat')
   throw new NotFoundError()
 });
 app.use(errorHandler)

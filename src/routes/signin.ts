@@ -1,9 +1,9 @@
 import express, { Request, Response } from "express";
-import {validateRequest} from '../middlewares/validate-request';
+import {validateRequest} from '@ajaisgtickets/common';
 import { body } from "express-validator";
 import { User } from "../models/user";
 import jwt from "jsonwebtoken";
-import {BadRequestError} from '../errors/bad-request-error';
+import {BadRequestError} from '@ajaisgtickets/common';
 import { PasswordHashing} from '../generalPurpose/password';
 
 const router = express.Router();

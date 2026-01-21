@@ -9,13 +9,7 @@
     "start": "node dist/index.js",
     "test": "jest --watchAll --no-cache"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "setupFilesAfterEnv": [
-      "./src/test/setup.ts"
-    ]
-  },
+ 
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,12 +23,12 @@
     "mongodb-memory-server": "^10.2.0",
     "nodemon": "^3.1.10",
     "supertest": "^7.1.4",
-    "ts-jest": "^29.4.1",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@ajaisgtickets/common": "^1.0.3",
+    "@ajaisgtickets/common": "^1.0.14",
     "@types/cookie-session": "^2.0.49",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.96",

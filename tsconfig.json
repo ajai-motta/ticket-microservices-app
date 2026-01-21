@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "NodeNext",
     "target": "ES2020",
     "strict": true,
+    "isolatedModules": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "rootDir": "src",
     "outDir": "dist"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  
 }

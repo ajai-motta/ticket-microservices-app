@@ -4,12 +4,13 @@ interface userattr{
 email: string;
 password: string;
 }
-interface userModel extends mongoose.Model<userDoc>{
-build(attr: userattr):userDoc;
-}
+
 interface userDoc extends mongoose.Document{
     email: string;
     password: string;
+}
+interface userModel extends mongoose.Model<userDoc>{
+build(attr: userattr):userDoc;
 }
 const userSchema= new mongoose.Schema({
     email: {
