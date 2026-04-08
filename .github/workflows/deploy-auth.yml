@@ -14,4 +14,4 @@ jobs:
               run: echo "USERNAME=${{ secrets.DOCKERUSERNAME }}"
             - run: echo "${{ secrets.ORIGINALDOCKERTOKENPASSWORD }}" | docker login -u "${{ secrets.DOCKERUSERNAME }}" --password-stdin
             - run:  docker build -t ${{ secrets.DOCKERUSERNAME }}/auth .
-            - run: docker push ${{ secrets.DOCKER_USERNAME }}/auth
+            - run: docker push ${{ secrets.DOCKERUSERNAME }}/auth
