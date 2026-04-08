@@ -7,12 +7,9 @@ jobs:
   build:
 
           runs-on: ubuntu-latest
+          environment: Docker-secret
           steps:
             - uses: actions/checkout@v2 
-            - run: echo " $DOCKER_PASSWORD "
-              env:
-                 DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-                 DOCKER_PASSWORD: ${{ secrets.ORIGINALDOCKERTOKENPASSWORD }}
             - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.ORIGINALDOCKERTOKENPASSWORD }}
             - run:  docker build -t ${{ secrets.DOCKER_USERNAME }}/auth .
             - run: docker push ${{ secrets.DOCKER_USERNAME }}/auth
